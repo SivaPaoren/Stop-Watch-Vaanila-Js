@@ -8,7 +8,7 @@ var buttonStop = document.getElementById("button-start");
 var buttonReset = document.getElementById("button-start");
 var intervalId = 0;
 var colorId = 0;
-
+var hour = 00;
 function timer(){
     milliSeconds++;
     if(milliSeconds <= 9){
