@@ -8,8 +8,8 @@ var buttonStop = document.getElementById("button-start");
 var buttonReset = document.getElementById("button-start");
 var intervalId = 0;
 var colorId = 0;
-function timer(){
 
+function timer(){
     milliSeconds++;
     if(milliSeconds <= 9){
         miliSec.innerHTML = "0"+ milliSeconds;
@@ -29,17 +29,21 @@ function timer(){
 }
 
 function start(){
+    window.clearInterval(intervalId);
+    window.clearInterval(colorId);
     intervalId = window.setInterval(timer);
     buttonStart.innerHTML = "Start";
     colorId = window.setInterval(setColor,500);
     
 }
+
 function stop(){
     window.clearInterval(intervalId);
     window.clearInterval(colorId);
     buttonStart.innerText = "Resume";
     
 }
+
 function reset(){
     stop();
     buttonStart.innerText = "Start";
@@ -57,5 +61,3 @@ function setColor(){
     var randomColor = Math.floor(Math.random()*16777215).toString(16);
     document.body.style.backgroundColor = "#"+ randomColor;
 }
-
-
