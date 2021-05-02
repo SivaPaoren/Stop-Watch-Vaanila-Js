@@ -1,23 +1,30 @@
 var seconds = 00;
-var milliSeconds = 00;
+var milliSeconds = 000;
+var minutes = 00;
+
 
 var sec = document.getElementById("seconds");
 var miliSec = document.getElementById("milliseconds");
 var buttonStart = document.getElementById("button-start");
 var buttonStop = document.getElementById("button-start");
 var buttonReset = document.getElementById("button-start");
+var mins = document.getElementById("mins");
+
 var intervalId = 0;
 var colorId = 0;
-var hour = 00;
+
 function timer(){
     milliSeconds++;
     if(milliSeconds <= 9){
         miliSec.innerHTML = "0"+ milliSeconds;
     }
     if(milliSeconds > 9){
-        miliSec.innerHTML = milliSeconds;
+        miliSec.innerHTML = "0"+milliSeconds;
     }
     if(milliSeconds > 99){
+        miliSec.innerHTML = milliSeconds;
+    }
+    if(milliSeconds > 300){
         seconds++;
         sec.innerHTML = '0'+seconds;
         milliSeconds = 0;
@@ -25,6 +32,16 @@ function timer(){
     }
     if(seconds > 9){
         sec.innerHTML = seconds;
+    }
+
+    if(seconds > 60){
+       minutes++;
+       mins.innerHTML = "0"+minutes;
+       seconds = 0;
+       sec.innerHTML = "0"+0;
+    }
+    if(minutes > 9){
+        mins.innerHTML = minutes;
     }
 }
 

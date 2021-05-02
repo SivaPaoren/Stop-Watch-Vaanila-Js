@@ -9,11 +9,16 @@
   <link rel="stylesheet" href="stopWatch.css">
 </head>
 <body id="bodyId">
-  <div class="container">
-    <img src="imgg.svg" alt="clock bacground" width="400">
-    <h2>Govinda Stop Watch</h2>
-    <p><label id="seconds">00</label> : <label id="milliseconds">00</label></p><button id="button-start" onclick="start()" type="button">Start</button> <button id="button-stop" onclick="stop()" type="button">Stop</button> <button id="button-reset" onclick="reset()" type="button">Reset</button>
-  </div>
+
+        <div class="container">
+          <img src="imgg.svg" alt="clock bacground" width="400">
+          <h2>Govinda Stop Watch</h2>
+          <p><label id="mins">00</label>:<label id="seconds">00</label> : <label id="milliseconds">000</label></p>
+          <button id="button-start" onclick="start()" type="button">Start</button>
+          <button id="button-stop" onclick="stop()" type="button">Stop</button> 
+          <button id="button-reset" onclick="reset()" type="button">Reset</button>
+        </div>
+
   <script src="stopWatch.js"></script>
 </body>
 </html>
