@@ -17,8 +17,8 @@ h1,h2,h3{
     text-transform: capitalize;
 }
 
-#seconds,#milliseconds,#mins{
-    font-size: 5rem;
+.timer{
+  font-size: 5rem;
 }
 
 button{
