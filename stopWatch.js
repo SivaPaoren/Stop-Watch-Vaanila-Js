@@ -1,47 +1,67 @@
 var seconds = 00;
 var milliSeconds = 000;
 var minutes = 00;
-
-
-var sec = document.getElementById("seconds");
-var miliSec = document.getElementById("milliseconds");
-var buttonStart = document.getElementById("button-start");
-var buttonStop = document.getElementById("button-start");
-var buttonReset = document.getElementById("button-start");
-var mins = document.getElementById("mins");
-
+var hours = 00;
 var intervalId = 0;
 var colorId = 0;
 
-function timer(){
+const secondsFromHtml = document.getElementById("seconds");
+const milliSecFromHtml= document.getElementById("milliseconds");
+const buttonStart = document.getElementById("button-start");
+const buttonStop = document.getElementById("button-start");
+const buttonReset = document.getElementById("button-start");
+const minutesFromHtml = document.getElementById("minutes");
+const hoursFromHtml = document.getElementById("hours");
+
+function milliSecondsTimer(){
     milliSeconds++;
     if(milliSeconds <= 9){
-        miliSec.innerHTML = "0"+ milliSeconds;
+        milliSecFromHtml.innerHTML = "0" + milliSeconds;
     }
     if(milliSeconds > 9){
-        miliSec.innerHTML = "0"+milliSeconds;
+        milliSecFromHtml.innerHTML = "0" + milliSeconds;
     }
     if(milliSeconds > 99){
-        miliSec.innerHTML = milliSeconds;
+        milliSecFromHtml.innerHTML = milliSeconds;
     }
     if(milliSeconds > 300){
         seconds++;
-        sec.innerHTML = '0'+seconds;
+        secondsFromHtml.innerHTML = '0' + seconds;
         milliSeconds = 0;
-        miliSec.innerHTML = "0"+0;
+        milliSecFromHtml.innerHTML = "0" + 0;
     }
-    if(seconds > 9){
-        sec.innerHTML = seconds;
-    }
+}
 
-    if(seconds > 60){
-       minutes++;
-       mins.innerHTML = "0"+minutes;
-       seconds = 0;
-       sec.innerHTML = "0"+0;
+function timer(){
+    milliSecondsTimer();
+    secondsTimer();
+    minutesTimer();
+}
+
+function secondsTimer(){
+    if(seconds > 9){
+        secondsFromHtml.innerHTML = seconds;
     }
+    if(seconds > 59){
+       minutes++;
+       minutesFromHtml.innerHTML = "0" + minutes;
+       seconds = 0;
+       secondsFromHtml.innerHTML = "0" + 0;
+    }
+}
+
+function minutesTimer(){
     if(minutes > 9){
-        mins.innerHTML = minutes;
+        minutesFromHtml.innerHTML = minutes;
+    }
+    if(minutes > 59){
+      hours++;
+      hoursFromHtml.innerHTML = "0" + hours;
+      minutes = 0;
+      minutesFromHtml.innerHTML = "0" + 0;
+    }
+    if(hours > 9){
+      hoursFromHtml.innerHTML = hours;
     }
 }
 
@@ -51,23 +71,29 @@ function start(){
     intervalId = window.setInterval(timer);
     buttonStart.innerHTML = "Start";
     colorId = window.setInterval(setColor,500);
-    
 }
 
 function stop(){
     window.clearInterval(intervalId);
     window.clearInterval(colorId);
     buttonStart.innerText = "Resume";
-    
+}
+
+function resetVariablesToZero(){
+    milliSeconds = "000";
+    seconds = "00";
+    minutes = "00";
+    hours = "00";
+    minutesFromHtml.innerHTML = minutes;
+    secondsFromHtml.innerHTML = seconds;
+    hoursFromHtml.innerHTML = hours;
+    milliSecFromHtml.innerHTML = milliSeconds;
 }
 
 function reset(){
     stop();
     buttonStart.innerText = "Start";
-    milliSeconds = "00";
-    seconds = "00";
-    sec.innerHTML = seconds;
-    miliSec.innerHTML = milliSeconds;
+    resetVariablesToZero();
 }
 
 function startStopDisable(a){
